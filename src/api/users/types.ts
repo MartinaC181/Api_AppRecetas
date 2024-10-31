@@ -2,8 +2,9 @@ type UserRole = "admin" | "user" | undefined;
 
 export interface IUser {
   _id: string | undefined;
-  user_name: string;
+  username: string;
   email: string;
   password: string;
-  role: UserRole;
+  is_admin: boolean;
+  role?: UserRole;
 }

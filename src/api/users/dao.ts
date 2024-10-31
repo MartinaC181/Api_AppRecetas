@@ -27,8 +27,10 @@ class UserDao {
     }
   }
   async createUser(user: IUser) {
+    console.log(user)
     try {
       const newUser = await User.create(user);
+      console.log(newUser)
       return newUser;
     } catch (error) {
       throw Error((error as Error).message);

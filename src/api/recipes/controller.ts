@@ -52,3 +52,5 @@ class userController {
         }
     }
 }
+
+export const recipeController = new userController();
