@@ -1,14 +1,13 @@
-import express, { Application, Request, Response } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import dbconnect from './config/db';
 import routes from './routes/routes';
 
 dotenv.config();
 
-
 const PORT = parseInt(process.env.PORT ?? "3000", 10);
 const HOST = process.env.HOST ?? "localhost";
-const app: Application = express();
+const app= express();
 
 app.use('/api', routes);
 
