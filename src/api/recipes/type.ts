@@ -6,6 +6,7 @@ export interface IRecipe {
     ingredients: string[];
     steps: string[];
     image: string;
-    createdAt: string;
-    userId: ObjectId;
+    createdAt?: string;
+    userId?: ObjectId;
 }
+

@@ -12,9 +12,11 @@ const PORT = parseInt(process.env.PORT ?? "5000", 10);
 const HOST = process.env.HOST ?? "localhost";
 const app= express();
 
+app.use(express.json());
+
 app.use(cors(
   {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
   }

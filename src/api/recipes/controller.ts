@@ -1,18 +1,22 @@
 import { Request, Response } from 'express';
 import { recipeService } from './service';
 import Recipe from './model';
+import { IRecipe } from './type';
 
 const { createRecipe, getRecipes, getRecipe, editRecipe, deleteRecipe } = recipeService;
 
 class userController {
     async createRecipe(req: Request, res: Response) {
+        const { title, description, ingredients, steps, image } = req.body;
         try {
-        const recipe = req.body;
+        const recipe: IRecipe = {
+            title, description, ingredients, steps, image
+        };
         const newRecipe = await createRecipe(recipe);
         res.status(201).json(newRecipe);
         } catch (error: any) {
         res.status(400).json({ message: error.message });
-        }
+        } 
     }
     
     async getRecipes(req: Request, res: Response) {
@@ -35,8 +39,11 @@ class userController {
     }
     
     async editRecipe(req: Request, res: Response) {
+        const id = req.params.id
+        const recipe: IRecipe = req.body
+        console.log(recipe)
         try {
-        const updatedRecipe = await Recipe.findByIdAndUpdate(req.params)
+        const updatedRecipe = await editRecipe(id, recipe);
         res.status(200).json(updatedRecipe);
         } catch (error:any) {
         res.status(400).json({ message: error.message });

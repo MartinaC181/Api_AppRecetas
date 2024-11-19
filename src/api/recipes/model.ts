@@ -1,4 +1,4 @@
-import { Schema, Model, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const RecipeSchema = new Schema({
     title: {
@@ -19,6 +19,7 @@ const RecipeSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
+        required: false,
         ref: "User",
     },
     Image: {
@@ -27,6 +28,7 @@ const RecipeSchema = new Schema({
     },
     createdAt: {
         type: Date,
+        required: false,
         default: Date.now,
     },
 });

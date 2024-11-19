@@ -34,9 +34,9 @@ class RecipeDao {
             throw Error((error as Error).message);
         }
     }
-    async editRecipe(recipeId: string, recipe: IRecipe) {
+    async editRecipe(id: string, recipe: IRecipe) {
         try {
-            const updatedRecipe = await Recipe.findByIdAndUpdate(recipeId, recipe, { new: true });
+            const updatedRecipe = await Recipe.findByIdAndUpdate(id, recipe, { new: true });
             return updatedRecipe;
         } catch (error) {
             throw Error((error as Error).message);
