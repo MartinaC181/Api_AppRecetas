@@ -6,10 +6,10 @@ const { createRecipe, getRecipes, getRecipe, editRecipe, deleteRecipe } = recipe
 
 class RecipeController {
     async createRecipe(req: Request, res: Response) {
-        const { title, description, ingredients, steps, image} = req.body;
+        const { title, description, ingredients, steps, Image} = req.body;
         try {
         const recipe: IRecipe = {
-            title, description, ingredients, steps, image
+            title, description, ingredients, steps, Image
         };
         const newRecipe = await createRecipe(recipe);
         res.status(201).json(newRecipe);
