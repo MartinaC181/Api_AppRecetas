@@ -5,7 +5,7 @@ export interface IRecipe {
     description: string;
     ingredients: string[];
     steps: string[];
-    image: string;
+    Image: string;
     createdAt?: string;
     userId?: ObjectId;
 }

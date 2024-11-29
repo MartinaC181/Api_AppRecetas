@@ -8,7 +8,7 @@ const recipeSchema = new Schema<IRecipe>({
     ingredients: { type: [String], required: true },
     steps: { type: [String], required: true },
     userId: { type: ObjectId, required: false },
-    image: { type: String, required: true },
+    Image: { type: String, required: true },
     createdAt: { type: Date, default: Date.now }
 });
 
