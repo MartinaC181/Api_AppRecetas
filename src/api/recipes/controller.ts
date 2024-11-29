@@ -1,13 +1,12 @@
 import { Request, Response } from 'express';
 import { recipeService } from './service';
-import Recipe from './model';
 import { IRecipe } from './type';
 
 const { createRecipe, getRecipes, getRecipe, editRecipe, deleteRecipe } = recipeService;
 
-class userController {
+class RecipeController {
     async createRecipe(req: Request, res: Response) {
-        const { title, description, ingredients, steps, image } = req.body;
+        const { title, description, ingredients, steps, image} = req.body;
         try {
         const recipe: IRecipe = {
             title, description, ingredients, steps, image
@@ -52,7 +51,7 @@ class userController {
     
     async deleteRecipe(req: Request, res: Response) {
         try {
-        await Recipe.findByIdAndDelete(req.params.id);
+        await deleteRecipe(req.params.id);
         res.status(200).json({ message: 'Recipe deleted successfully' });
         } catch (error:any) {
         res.status(400).json({ message: error.message });
@@ -60,4 +59,4 @@ class userController {
     }
 }
 
-export const recipeController = new userController();
+export const recipeController = new RecipeController();

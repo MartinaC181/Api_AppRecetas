@@ -26,9 +26,10 @@ class RecipeDao {
             throw Error((error as Error).message);
         }
     }
-    async createRecipe(recipe: IRecipe) {
+    async createRecipe(recipe: Partial<IRecipe>) {
         try {
             const newRecipe = await Recipe.create(recipe);
+            console.log(newRecipe);
             return newRecipe;
         } catch (error) {
             throw Error((error as Error).message);

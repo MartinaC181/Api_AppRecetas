@@ -3,7 +3,7 @@ import { recipeController } from "./controller";
 
 const recipeRouter = express.Router();
 
-const { getRecipes, getRecipe, createRecipe, deleteRecipe, editRecipe } = recipeController;
+const { createRecipe, getRecipes, getRecipe, editRecipe, deleteRecipe } = recipeController;
 
 recipeRouter.get("/", getRecipes);
 recipeRouter.get("/:id", getRecipe);
