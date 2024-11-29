@@ -41,17 +41,15 @@ class UserService {
     }
   }
   async loginUser(user: { email: string; password: string }) {
-    try  {
       const { email, password } = user;
       const existingUser = await getUserByMail(email);
-      console.log(existingUser);
       
       //verificamos si el usuario existe
       if (!existingUser) {
         throw new Error("Invalid email");
       }
       const isPasswordValid = await compare(password, existingUser.password);
-
+      
       //verificamos si la contraseña es correcta
       if (!isPasswordValid) {
         throw new Error("Invalid password");
@@ -65,11 +63,7 @@ class UserService {
         process.env.JWT_SECRET!,
         { expiresIn: "1h" }
       );
-      console.log(token);
       return token;
-    } catch (error) {
-      throw Error((error as Error).message);
-    }
   }
   async editUser(id: string, user: IUser) {
     try {
